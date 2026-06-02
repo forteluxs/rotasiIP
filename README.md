@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://user-images.githubusercontent.com/25837540/107883163-dbf70380-6f1f-11eb-856f-e69e733313e5.png" width="400px" alt="rotasiIP"></a>
+  <a href="#"><img src="https://github.com/forteluxs/rotasiIP/blob/master/rotasiIP.jpg?raw=true" width="400px" alt="rotasiIP"></a>
 </h1>
 
 <h4 align="center">An incredibly fast proxy checker & IP rotator with ease.</h4>
