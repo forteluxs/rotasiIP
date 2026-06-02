@@ -112,10 +112,6 @@ Manual building executable from source code:
 
 For usage, it's always required to provide your proxy list, whether it is used to check or as a proxy pool for your proxy IP rotation.
 
-<center>
-  <a href="#"><img alt="rotasiIP" src="https://github.com/user-attachments/assets/3c19e328-cfd7-43f7-bf83-b3996671fc67" width="80%"></a>
-</center>
-
 ## Basic
 
 ```bash
@@ -232,11 +228,6 @@ Pass `--check` flag in command to perform proxy checks:
 
 The above case also uses `--output` flag to save a live proxy of specific country code with `--only-cc` flag (`ISO-3166` alpha-2) into file _(live.txt)_ from checking result.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/97b9e5ad-64bd-403a-bd3a-1bc4eb7fb3f1" height="400"><br />
-  <i>(Figure: Checking proxies rotasiIP with max. 5s timeout)</i>
-</p>
-
 #### Custom Output Format
 
 You can customize the output format of the proxy checker using the `--output-format` flag with [fasttemplate](https://github.com/valyala/fasttemplate) syntax:
@@ -277,44 +268,6 @@ You can customize the output format of the proxy checker using the `--output-for
 ```
 
 When using `--output-format`, the formatted output is applied to both console display and file output (when using `-o`/`--output` flag).
-
-### Proxy IP rotator
-
-Furthermore, if you wish to do proxy IP rotator from proxies that are still alive earlier from the results of checking `(live.txt)` _(or if you have your own list)_, you must use `-a` _(--address)_ flag instead to run proxy server:
-
-```bash
-▶ rotasiIP -a localhost:8089 -f live.txt -r 10 -m random
-```
-
-The `-r` _(--rotate)_ flag works to rotate your IP for every _N_ request value you provide `(10)`, and the `-m` _(--method)_ flag will rotate the proxy sequential/randomly.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/b86a5bf4-41e6-43ac-8077-9f82442e9577">
-  <i>(Figure: Running rotasiIP as proxy IP rotator with verbose mode)</i>
-</p>
-
-### [Burp Suite](https://portswigger.net/burp/documentation/desktop/getting-started/installing-burp) Upstream Proxy
-
-In case you want to use `rotasiIP` _(proxy IP rotator)_ as an upstream proxy in Burp Suite, acting in-between Burp Suite and rotasiIP to the internet, so you don't need any additional extensions in Burp Suite for that. To demonstrate this:
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/25837540/107985702-24d0ba00-6ffd-11eb-9489-c19e52c921f5.jpg">
-  <i>(Figure: Settings Burp Suite Upstream Proxy to rotasiIP)</i>
-</p>
-
-In your Burp Suite instance, select **Project options** menu, and click **Connections** tab. In the **Upstream Proxy Servers** section, check **Override user options** then press **Add** button to add your upstream proxy rule. After that, fill required columns _(Destination host, Proxy host & Proxy port)_ with correct details. Click **OK** to save settings.
-
-### [OWASP ZAP](https://www.zaproxy.org/download/) Proxy Chain
-
-It acts the same way when you using an upstream proxy. OWASP ZAP allows you to connect to another proxy for outgoing connections in OWASP ZAP session. To chain it with a rotasiIP proxy server:
-
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/25837540/108060995-41670380-708a-11eb-83ad-c781421af473.png">
-	<i>(Figure: Settings proxy chain connection in OWASP ZAP to rotasiIP)</i>
-</p>
-
-
-Select **Tools** in the menu bar in your ZAP session window, then select the **Options** _(shortcut: Ctrl+Alt+O)_ submenu, and go to **Connection** section. In that window, scroll to **Use proxy chain** part then check **Use an outgoing proxy server**. After that, fill required columns _(Address/Domain Name & Port)_ with correct details. Click **OK** to save settings.
 
 ### Proxy format
 
@@ -417,11 +370,6 @@ Currently IP rotation runs the proxy server only as an HTTP protocol, not a SOCK
 
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/forteluxs/rotasiIP/issues)
 
-This project exists thanks to all the people who contribute. To learn how to setup a development environment and for contribution guidelines, see [CONTRIBUTING.md](https://github.com/forteluxs/rotasiIP/blob/master/.github/CONTRIBUTING.md).
-
-<a href="https://github.com/forteluxs/rotasiIP/graphs/contributors">
-	<img src=".github/CONTRIBUTORS.svg">
-</a>
 
 # Pronunciation
 
