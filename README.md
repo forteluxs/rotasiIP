@@ -1,30 +1,30 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://user-images.githubusercontent.com/25837540/107883163-dbf70380-6f1f-11eb-856f-e69e733313e5.png" width="400px" alt="mubeng"></a>
+  <a href="#"><img src="https://user-images.githubusercontent.com/25837540/107883163-dbf70380-6f1f-11eb-856f-e69e733313e5.png" width="400px" alt="rotasiIP"></a>
 </h1>
 
 <h4 align="center">An incredibly fast proxy checker & IP rotator with ease.</h4>
 
 <p align="center">
 	<a href="https://golang.org"><img src="https://img.shields.io/badge/made%20with-Go-brightgreen"></a>
-	<a href="https://goreportcard.com/report/github.com/mubeng/mubeng"><img src="https://goreportcard.com/badge/github.com/mubeng/mubeng"></a>
-	<a href="https://github.com/mubeng/mubeng/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-yellowgreen"></a>
+	<a href="https://goreportcard.com/report/github.com/forteluxs/rotasiIP"><img src="https://goreportcard.com/badge/github.com/forteluxs/rotasiIP"></a>
+	<a href="https://github.com/forteluxs/rotasiIP/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-yellowgreen"></a>
 	<a href="#"><img src="https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-green"></a>
-	<a href="https://github.com/mubeng/mubeng/releases"><img src="https://img.shields.io/github/release/mubeng/mubeng"></a>
-	<a href="https://github.com/mubeng/mubeng/issues"><img src="https://img.shields.io/github/issues/mubeng/mubeng"></a>
+	<a href="https://github.com/forteluxs/rotasiIP/releases"><img src="https://img.shields.io/github/release/forteluxs/rotasiIP"></a>
+	<a href="https://github.com/forteluxs/rotasiIP/issues"><img src="https://img.shields.io/github/issues/forteluxs/rotasiIP"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/mubeng/mubeng/blob/master/.github/CONTRIBUTING.md">Contributing</a> •
-  <a href="https://github.com/mubeng/mubeng/blob/master/CHANGELOG.md">What's new</a> •
-  <a href="https://pkg.go.dev/github.com/mubeng/mubeng/pkg/mubeng">Documentation</a> •
-  <a href="https://github.com/mubeng/mubeng/issues/new/choose">Report Issues</a>
+  <a href="https://github.com/forteluxs/rotasiIP/blob/master/.github/CONTRIBUTING.md">Contributing</a> •
+  <a href="https://github.com/forteluxs/rotasiIP/blob/master/CHANGELOG.md">What's new</a> •
+  <a href="https://pkg.go.dev/github.com/forteluxs/rotasiIP/pkg/rotasiIP">Documentation</a> •
+  <a href="https://github.com/forteluxs/rotasiIP/issues/new/choose">Report Issues</a>
 </p>
 
 ---
 
 - [Features](#features)
-- [Why mubeng?](#why-mubeng)
+- [Why rotasiIP?](#why-rotasiIP)
 - [Installation](#installation)
   - [Binary](#binary)
   - [Docker](#docker)
@@ -61,11 +61,11 @@
 - **User-friendly**: Simply run it against your proxy file and select the desired action.
 - **Cross-platform**: Runs seamlessly on Windows, Linux, Mac, and even Raspberry Pi.
 
-# Why mubeng?
+# Why rotasiIP?
 
 It's fairly simple, there is no need for additional configuration.
 
-`mubeng` has 2 core functionality:
+`rotasiIP` has 2 core functionality:
 
 ### 1. Run proxy server as proxy IP rotation
 
@@ -79,14 +79,14 @@ So, you don't need any extra proxy checking tools out there if you want to check
 
 ## Binary
 
-Simply, download a pre-built binary from [releases page](https://github.com/mubeng/mubeng/releases) and run!
+Simply, download a pre-built binary from [releases page](https://github.com/forteluxs/rotasiIP/releases) and run!
 
 ## Docker
 
 Pull the [Docker](https://docs.docker.com/get-docker/) image by running:
 
 ```bash
-▶ docker pull ghcr.io/mubeng/mubeng:latest
+▶ docker pull ghcr.io/forteluxs/rotasiIP:latest
 ```
 
 ## Source
@@ -94,7 +94,7 @@ Pull the [Docker](https://docs.docker.com/get-docker/) image by running:
 Using [Go](https://golang.org/doc/install) compiler:
 
 ```bash
-▶ go install -v github.com/mubeng/mubeng@latest
+▶ go install -v github.com/forteluxs/rotasiIP@latest
 ```
 
 ### — or
@@ -102,10 +102,10 @@ Using [Go](https://golang.org/doc/install) compiler:
 Manual building executable from source code:
 
 ```bash
-▶ git clone https://github.com/mubeng/mubeng
-▶ cd mubeng
+▶ git clone https://github.com/forteluxs/rotasiIP
+▶ cd rotasiIP
 ▶ make build
-▶ (sudo) install ./bin/mubeng /usr/local/bin
+▶ (sudo) install ./bin/rotasiIP /usr/local/bin
 ```
 
 # Usage
@@ -113,13 +113,13 @@ Manual building executable from source code:
 For usage, it's always required to provide your proxy list, whether it is used to check or as a proxy pool for your proxy IP rotation.
 
 <center>
-  <a href="#"><img alt="kitabisa mubeng" src="https://github.com/user-attachments/assets/3c19e328-cfd7-43f7-bf83-b3996671fc67" width="80%"></a>
+  <a href="#"><img alt="rotasiIP" src="https://github.com/user-attachments/assets/3c19e328-cfd7-43f7-bf83-b3996671fc67" width="80%"></a>
 </center>
 
 ## Basic
 
 ```bash
-▶ mubeng [-c|-a :8080] -f file.txt [options...]
+▶ rotasiIP [-c|-a :8080] -f file.txt [options...]
 ```
 
 ## Options
@@ -127,7 +127,7 @@ For usage, it's always required to provide your proxy list, whether it is used t
 Here are all the options it supports.
 
 ```bash
-▶ mubeng -h
+▶ rotasiIP -h
 ```
 
 | **Flag**                      	| **Description**                                              	|
@@ -153,9 +153,9 @@ Here are all the options it supports.
 | -s, --sync                      | Sync will wait for the previous request to complete.          |
 | -v, --verbose                   | Dump HTTP request/responses or show died proxy on check.      |
 | -o, --output `<FILE>`           | Save output from proxy server or live check.                  |
-| -u, --update                    | Update mubeng to the latest stable version.                   |
+| -u, --update                    | Update rotasiIP to the latest stable version.                   |
 | -w, --watch                     | Watch proxy file, live-reload from changes.                   |
-| -V, --version                   | Show current mubeng version.                                  |
+| -V, --version                   | Show current rotasiIP version.                                  |
 
 <table>
 	<td>
@@ -168,10 +168,10 @@ Here are all the options it supports.
 				</ul> -->
 			</li>
 			<li>The proxy server runs asynchronously by default, so it doesn't guarantee that your requests after <i>N</i> (which is <i>N+1</i> and so on) will rotate the proxy IP, instead use the <code>-s/--sync</code> flag to wait for requests to the previous proxy to complete.</li>
-			<li>Daemon mode <code>(-d/--daemon)</code> will install mubeng as a service on the (Linux/OSX) system/setting up callback (Windows).
+			<li>Daemon mode <code>(-d/--daemon)</code> will install rotasiIP as a service on the (Linux/OSX) system/setting up callback (Windows).
 				<ul>
 					<li>Hence you can control service with <code>journalctl</code>, <code>service</code> or <code>net</code> (for Windows) command to start/stop proxy server.</li>
-					<li>Whenever you activate the daemon mode, it works by forcibly stop and uninstalling the existing mubeng service, then re-install and starting it up in daemon.</li>
+					<li>Whenever you activate the daemon mode, it works by forcibly stop and uninstalling the existing rotasiIP service, then re-install and starting it up in daemon.</li>
 				</ul>
 			</li>
 			<li>Verbose mode <code>(-v/--verbose)</code> and timeout <code>(-t/--timeout)</code> apply to both proxy check and proxy IP rotation actions.</li>
@@ -200,7 +200,7 @@ Here are all the options it supports.
 
 ## Install SSL Certificate
 
-mubeng uses built-in certificate authority by [GoProxy](https://github.com/elazarl/goproxy). With mubeng proxy server running, the generated certificate can be exported by visiting `http://mubeng/cert` in a browser.
+rotasiIP uses built-in certificate authority by [GoProxy](https://github.com/elazarl/goproxy). With rotasiIP proxy server running, the generated certificate can be exported by visiting `http://rotasiIP/cert` in a browser.
 
 Installation steps for CA certificate is [similar to other](https://portswigger.net/burp/documentation/desktop/external-browser-config/certificate) proxy tools.
 
@@ -219,22 +219,22 @@ socks5://127.0.0.1:2121
 	</td>
 </table>
 
-> Because we use auto-switch transport, `mubeng` can accept multiple proxy protocol schemes at once.<br>
-> Please refer to [documentation](https://pkg.go.dev/github.com/mubeng/mubeng/pkg/mubeng#Transport) for this package.
+> Because we use auto-switch transport, `rotasiIP` can accept multiple proxy protocol schemes at once.<br>
+> Please refer to [documentation](https://pkg.go.dev/github.com/forteluxs/rotasiIP/pkg/rotasiIP#Transport) for this package.
 
 ### Proxy checker
 
 Pass `--check` flag in command to perform proxy checks:
 
 ```bash
-▶ mubeng -f proxies.txt --check --only-cc AU,US,UK --output live.txt
+▶ rotasiIP -f proxies.txt --check --only-cc AU,US,UK --output live.txt
 ```
 
 The above case also uses `--output` flag to save a live proxy of specific country code with `--only-cc` flag (`ISO-3166` alpha-2) into file _(live.txt)_ from checking result.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/97b9e5ad-64bd-403a-bd3a-1bc4eb7fb3f1" height="400"><br />
-  <i>(Figure: Checking proxies mubeng with max. 5s timeout)</i>
+  <i>(Figure: Checking proxies rotasiIP with max. 5s timeout)</i>
 </p>
 
 #### Custom Output Format
@@ -242,7 +242,7 @@ The above case also uses `--output` flag to save a live proxy of specific countr
 You can customize the output format of the proxy checker using the `--output-format` flag with [fasttemplate](https://github.com/valyala/fasttemplate) syntax:
 
 ```bash
-▶ mubeng -f proxies.txt --check --output-format "{{proxy}} | {{country}} | {{duration}}"
+▶ rotasiIP -f proxies.txt --check --output-format "{{proxy}} | {{country}} | {{duration}}"
 ```
 
 **Available template variables:**
@@ -267,13 +267,13 @@ You can customize the output format of the proxy checker using the `--output-for
 
 ```bash
 # JSON-like format
-▶ mubeng -f proxies.txt --check --output-format '{"proxy":"{{proxy}}","country":"{{country}}","duration":"{{duration}}"}'
+▶ rotasiIP -f proxies.txt --check --output-format '{"proxy":"{{proxy}}","country":"{{country}}","duration":"{{duration}}"}'
 
 # CSV format
-▶ mubeng -f proxies.txt --check --output-format "{{proxy}},{{country}},{{city}},{{duration}}"
+▶ rotasiIP -f proxies.txt --check --output-format "{{proxy}},{{country}},{{city}},{{duration}}"
 
 # Custom detailed format
-▶ mubeng -f proxies.txt --check --output-format "[{{country}}] {{proxy}} ({{org}}) - {{duration}}"
+▶ rotasiIP -f proxies.txt --check --output-format "[{{country}}] {{proxy}} ({{org}}) - {{duration}}"
 ```
 
 When using `--output-format`, the formatted output is applied to both console display and file output (when using `-o`/`--output` flag).
@@ -283,34 +283,34 @@ When using `--output-format`, the formatted output is applied to both console di
 Furthermore, if you wish to do proxy IP rotator from proxies that are still alive earlier from the results of checking `(live.txt)` _(or if you have your own list)_, you must use `-a` _(--address)_ flag instead to run proxy server:
 
 ```bash
-▶ mubeng -a localhost:8089 -f live.txt -r 10 -m random
+▶ rotasiIP -a localhost:8089 -f live.txt -r 10 -m random
 ```
 
 The `-r` _(--rotate)_ flag works to rotate your IP for every _N_ request value you provide `(10)`, and the `-m` _(--method)_ flag will rotate the proxy sequential/randomly.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b86a5bf4-41e6-43ac-8077-9f82442e9577">
-  <i>(Figure: Running mubeng as proxy IP rotator with verbose mode)</i>
+  <i>(Figure: Running rotasiIP as proxy IP rotator with verbose mode)</i>
 </p>
 
 ### [Burp Suite](https://portswigger.net/burp/documentation/desktop/getting-started/installing-burp) Upstream Proxy
 
-In case you want to use `mubeng` _(proxy IP rotator)_ as an upstream proxy in Burp Suite, acting in-between Burp Suite and mubeng to the internet, so you don't need any additional extensions in Burp Suite for that. To demonstrate this:
+In case you want to use `rotasiIP` _(proxy IP rotator)_ as an upstream proxy in Burp Suite, acting in-between Burp Suite and rotasiIP to the internet, so you don't need any additional extensions in Burp Suite for that. To demonstrate this:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/25837540/107985702-24d0ba00-6ffd-11eb-9489-c19e52c921f5.jpg">
-  <i>(Figure: Settings Burp Suite Upstream Proxy to mubeng)</i>
+  <i>(Figure: Settings Burp Suite Upstream Proxy to rotasiIP)</i>
 </p>
 
 In your Burp Suite instance, select **Project options** menu, and click **Connections** tab. In the **Upstream Proxy Servers** section, check **Override user options** then press **Add** button to add your upstream proxy rule. After that, fill required columns _(Destination host, Proxy host & Proxy port)_ with correct details. Click **OK** to save settings.
 
 ### [OWASP ZAP](https://www.zaproxy.org/download/) Proxy Chain
 
-It acts the same way when you using an upstream proxy. OWASP ZAP allows you to connect to another proxy for outgoing connections in OWASP ZAP session. To chain it with a mubeng proxy server:
+It acts the same way when you using an upstream proxy. OWASP ZAP allows you to connect to another proxy for outgoing connections in OWASP ZAP session. To chain it with a rotasiIP proxy server:
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/25837540/108060995-41670380-708a-11eb-83ad-c781421af473.png">
-	<i>(Figure: Settings proxy chain connection in OWASP ZAP to mubeng)</i>
+	<i>(Figure: Settings proxy chain connection in OWASP ZAP to rotasiIP)</i>
 </p>
 
 
@@ -318,11 +318,11 @@ Select **Tools** in the menu bar in your ZAP session window, then select the **O
 
 ### Proxy format
 
-Currently mubeng supports HTTP(S) & SOCKSv4(A)/v5 protocol, see [examples](#examples) above. But, not limited by that we also support proxy string substitution and helper functions for your proxy pool.
+Currently rotasiIP supports HTTP(S) & SOCKSv4(A)/v5 protocol, see [examples](#examples) above. But, not limited by that we also support proxy string substitution and helper functions for your proxy pool.
 
 #### Templating
 
-If you have an authenticated proxy, you definitely don't want to write credentials constantly to the proxy pool file. **mubeng** can evaluate environment variable with `{{VARIABLE}}` writing style.
+If you have an authenticated proxy, you definitely don't want to write credentials constantly to the proxy pool file. **rotasiIP** can evaluate environment variable with `{{VARIABLE}}` writing style.
 
 For example:
 
@@ -332,7 +332,7 @@ For example:
 $ export USERNAME="FOO"
 $ export PASSWORD="BAR"
 $ echo "http://{{USERNAME}}:{{PASSWORD}}@192.168.0.1:31337" > list.txt
-$ mubeng -f list.txt -a :8080
+$ rotasiIP -f list.txt -a :8080
 ```
 
 2. Helper function
@@ -348,7 +348,7 @@ As an example of its use, we will be utilizing stream isolation over Tor SOCKS. 
 
 ```console
 $ echo "socks5://{{uint32}}:{{uint32}}@127.0.0.1:9050" > list.txt
-$ while :; do mubeng -f list.txt -c 2>/dev/null; done
+$ while :; do rotasiIP -f list.txt -c 2>/dev/null; done
 [LIVE] [XX] [23.**.177.2] socks5://2123347975:3094119616@127.0.0.1:9050
 [LIVE] [XX] [199.**.253.156] socks5://1646373938:2740927425@127.0.0.1:9050
 [LIVE] [XX] [185.**.101.137] socks5://814036283:1382144874@127.0.0.1:9050
@@ -361,7 +361,7 @@ $ while :; do mubeng -f list.txt -c 2>/dev/null; done
 
 #### Amazon API Gateway
 
-The mubeng proxy rotator also supports integration with Amazon API Gateway. This allows you to route traffic through multiple AWS regions for enhanced redundancy and geographic distribution.
+The rotasiIP proxy rotator also supports integration with Amazon API Gateway. This allows you to route traffic through multiple AWS regions for enhanced redundancy and geographic distribution.
 
 Format for AWS proxy strings:
 
@@ -398,13 +398,13 @@ This will create entries for regions like:
 * `aws://{{AWS_ACCESS_KEY_ID}}:{{AWS_SECRET_ACCESS_KEY}}@us-west-1`
 * ...
 
-3. Start mubeng proxy server pointing to your AWS proxy list:
+3. Start rotasiIP proxy server pointing to your AWS proxy list:
 
 ```bash
-$ mubeng -f list.txt -a :8080
+$ rotasiIP -f list.txt -a :8080
 ```
 
-This setup enables mubeng to automatically rotate traffic through multiple AWS regions via API Gateway. When running the proxy server, mubeng will dynamically substitute your AWS credentials from environment variables using the [templating](#templating) feature described above.
+This setup enables rotasiIP to automatically rotate traffic through multiple AWS regions via API Gateway. When running the proxy server, rotasiIP will dynamically substitute your AWS credentials from environment variables using the [templating](#templating) feature described above.
 
 > [!NOTE]
 > Ensure your AWS credentials have the appropriate permissions to access API Gateway in the specified regions.
@@ -415,22 +415,21 @@ Currently IP rotation runs the proxy server only as an HTTP protocol, not a SOCK
 
 # Contributors
 
-[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mubeng/mubeng/issues)
+[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/forteluxs/rotasiIP/issues)
 
-This project exists thanks to all the people who contribute. To learn how to setup a development environment and for contribution guidelines, see [CONTRIBUTING.md](https://github.com/mubeng/mubeng/blob/master/.github/CONTRIBUTING.md).
+This project exists thanks to all the people who contribute. To learn how to setup a development environment and for contribution guidelines, see [CONTRIBUTING.md](https://github.com/forteluxs/rotasiIP/blob/master/.github/CONTRIBUTING.md).
 
-<a href="https://github.com/mubeng/mubeng/graphs/contributors">
+<a href="https://github.com/forteluxs/rotasiIP/graphs/contributors">
 	<img src=".github/CONTRIBUTORS.svg">
 </a>
 
 # Pronunciation
 
-[`jv_ID`](https://www.localeplanet.com/java/jv-ID/index.html) • **/mo͞oˌbēNG/** — mubeng-mubeng nganti mumet. (ꦩꦸꦧꦺꦁ​ꦔꦤ꧀ꦠꦶ​ꦩꦸꦩꦺꦠ꧀)
 
 # Changes
 
-For changes, see [CHANGELOG.md](https://github.com/mubeng/mubeng/blob/master/CHANGELOG.md).
+For changes, see [CHANGELOG.md](https://github.com/forteluxs/rotasiIP/blob/master/CHANGELOG.md).
 
 # License
 
-This program is free software: you can redistribute it and/or modify it under the terms of the [Apache license](https://github.com/mubeng/mubeng/blob/master/LICENSE). mubeng and any contributions are copyright © by Dwi Siswanto 2021-2025.
+This program is free software: you can redistribute it and/or modify it under the terms of the [Apache license](https://github.com/forteluxs/rotasiIP/blob/master/LICENSE). rotasiIP and any contributions are copyright © by Dwi Siswanto 2021-2025.
