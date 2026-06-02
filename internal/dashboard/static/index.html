@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rotasiIP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#07080f;
+  --s1:#0e1020;
+  --s2:#141728;
+  --border:#1c1f35;
+  --border-h:#272b48;
+  --accent:#7c6ef6;
+  --accent-dim:rgba(124,110,246,.12);
+  --accent-glow:rgba(124,110,246,.25);
+  --text:#dde1f0;
+  --muted:#3e4460;
+  --muted-2:#5a6080;
+  --green:#2dc8a0;
+  --red:#f06070;
+  --yellow:#f0b840;
+  --blue:#5090f0;
+  --purple:#a580fa;
+  --r:8px;
+}
+
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* ── NAV ── */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  height:52px;
+  border-bottom:1px solid var(--border);
+  background:rgba(14,16,32,.8);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-icon{
+  width:28px;height:28px;
+  background:var(--accent-dim);
+  border:1px solid rgba(124,110,246,.3);
+  border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;
+  color:var(--accent);
+}
+.brand-name{
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:-.3px;
+  color:#fff;
+}
+.brand-tag{
+  font-size:11px;
+  color:var(--muted-2);
+  letter-spacing:.3px;
+}
+.nav-right{
+  display:flex;align-items:center;gap:16px;
+}
+.status-dot{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;
+  color:var(--muted-2);
+}
+.dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 6px var(--green);
+  animation:pulse 2s infinite;
+}
+.dot.off{background:var(--muted);box-shadow:none;animation:none;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.uptime{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--muted-2);
+  background:var(--s1);
+  border:1px solid var(--border);
+  border-radius:5px;
+  padding:3px 8px;
+}
+
+/* ── LAYOUT ── */
+main{
+  max-width:1000px;
+  margin:0 auto;
+  padding:28px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* ── CARDS ── */
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+}
+.card{
+  background:var(--s1);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:18px 20px;
+  transition:border-color .2s;
+}
+.card:hover{border-color:var(--border-h);}
+.card-label{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:var(--muted-2);
+  margin-bottom:10px;
+}
+.card-value{
+  font-size:30px;
+  font-weight:600;
+  letter-spacing:-1px;
+  color:#fff;
+  line-height:1;
+}
+.card-value.mono{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;
+  letter-spacing:-.5px;
+  word-break:break-all;
+}
+.card-sub{
+  font-size:11px;
+  color:var(--muted-2);
+  margin-top:5px;
+}
+.card-accent{color:var(--accent);}
+
+/* ── PANEL ── */
+.panel{
+  background:var(--s1);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px 18px;
+  border-bottom:1px solid var(--border);
+  background:var(--s2);
+}
+.panel-title{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  color:var(--muted-2);
+}
+.panel-body{padding:18px;}
+
+/* ── CONFIG ── */
+.config-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.config-label{
+  font-size:13px;
+  color:var(--muted-2);
+  white-space:nowrap;
+}
+input[type=number]{
+  width:70px;
+  background:var(--s2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  color:var(--text);
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  padding:6px 10px;
+  outline:none;
+  transition:border-color .15s;
+}
+input[type=number]:focus{border-color:var(--accent);}
+select{
+  background:var(--s2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  padding:6px 28px 6px 10px;
+  outline:none;
+  cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a6080'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 10px center;
+  transition:border-color .15s;
+}
+select:focus{border-color:var(--accent);}
+.btn{
+  background:var(--accent);
+  border:none;
+  border-radius:6px;
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  padding:7px 18px;
+  cursor:pointer;
+  transition:opacity .15s,transform .1s;
+}
+.btn:hover{opacity:.85;}
+.btn:active{transform:scale(.97);}
+.btn-ghost{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted-2);
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:500;
+  padding:5px 12px;
+  border-radius:5px;
+  cursor:pointer;
+  transition:border-color .15s,color .15s;
+}
+.btn-ghost:hover{border-color:var(--border-h);color:var(--text);}
+.save-hint{
+  font-size:11px;
+  color:var(--green);
+  opacity:0;
+  transition:opacity .3s;
+}
+.save-hint.show{opacity:1;}
+
+/* ── LOG ── */
+.log-area{
+  height:380px;
+  overflow-y:auto;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  padding:4px 0;
+  scroll-behavior:smooth;
+}
+.log-area::-webkit-scrollbar{width:4px;}
+.log-area::-webkit-scrollbar-track{background:transparent;}
+.log-area::-webkit-scrollbar-thumb{background:var(--border-h);border-radius:4px;}
+
+.log-empty{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  gap:8px;
+  color:var(--muted);
+}
+.log-empty-icon{font-size:24px;opacity:.4;}
+
+.log-entry{
+  display:grid;
+  grid-template-columns:62px 52px 1fr 40px 52px;
+  gap:0 12px;
+  align-items:center;
+  padding:5px 18px;
+  border-bottom:1px solid rgba(28,31,53,.6);
+  transition:background .1s;
+}
+.log-entry:last-child{border-bottom:none;}
+.log-entry:hover{background:rgba(255,255,255,.02);}
+
+.log-time{color:var(--muted-2);font-size:11px;}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.3px;
+  padding:2px 6px;
+  border-radius:4px;
+  min-width:46px;
+  text-align:center;
+}
+.badge-GET{background:rgba(124,110,246,.18);color:#a39eff;}
+.badge-POST{background:rgba(45,200,160,.15);color:#2dc8a0;}
+.badge-PUT{background:rgba(240,184,64,.15);color:#f0b840;}
+.badge-DELETE{background:rgba(240,96,112,.15);color:#f06070;}
+.badge-CONNECT{background:rgba(160,128,250,.15);color:#a580fa;}
+.badge-OTHER{background:rgba(90,96,128,.2);color:#5a6080;}
+
+.log-url{
+  color:var(--text);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:12px;
+}
+.log-url span{color:var(--muted-2);}
+
+.log-status{
+  font-size:12px;
+  font-weight:500;
+  text-align:right;
+}
+.s2xx{color:var(--green);}
+.s3xx{color:var(--yellow);}
+.s4xx,.s5xx{color:var(--red);}
+
+.log-ms{color:var(--muted-2);font-size:11px;text-align:right;}
+
+.log-proxy-row{
+  grid-column:2/-1;
+  font-size:11px;
+  color:var(--muted);
+  padding:0 0 4px;
+  margin-top:-3px;
+}
+.log-proxy-row span{color:rgba(124,110,246,.6);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <div class="brand-icon">◈</div>
+    <div>
+      <div class="brand-name">rotasiIP</div>
+      <div class="brand-tag">proxy rotator</div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="status-dot">
+      <div class="dot" id="statusDot"></div>
+      <span id="statusText">connecting…</span>
+    </div>
+    <div class="uptime" id="uptime">00:00:00</div>
+  </div>
+</nav>
+
+<main>
+  <!-- Stats -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Proxies Loaded</div>
+      <div class="card-value" id="statProxies">—</div>
+      <div class="card-sub"><span id="statRotates">—</span> rotations</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Requests</div>
+      <div class="card-value" id="statRequests">—</div>
+      <div class="card-sub"><span id="statRps">—</span> req/s &nbsp;·&nbsp; <span id="statErrors" style="color:var(--red)">—</span> errors</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Current Proxy</div>
+      <div class="card-value mono card-accent" id="statProxy">—</div>
+      <div class="card-sub" id="statProxyProto">—</div>
+    </div>
+  </div>
+
+  <!-- Config -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-title">Configuration</span>
+      <span class="save-hint" id="saveHint">✓ Applied</span>
+    </div>
+    <div class="panel-body" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="config-row">
+        <span class="config-label">Rotate every</span>
+        <input type="number" id="cfgRotate" min="1" value="1" style="width:60px">
+        <span class="config-label">req &nbsp;·&nbsp; Method</span>
+        <select id="cfgMethod">
+          <option value="random">Random</option>
+          <option value="sequent">Sequential</option>
+        </select>
+      </div>
+      <div class="config-row">
+        <span class="config-label">Rate limit</span>
+        <input type="number" id="cfgRateLimit" min="0" step="0.1" value="0" style="width:70px">
+        <span class="config-label">req/s &nbsp;·&nbsp; Delay</span>
+        <input type="text" id="cfgDelay" placeholder="e.g. 500ms" style="width:90px;background:var(--s2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:JetBrains Mono,monospace;font-size:13px;padding:6px 10px;outline:none;">
+        <button class="btn" onclick="applyConfig()">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Log -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-title">Live Traffic</span>
+      <button class="btn-ghost" onclick="clearLog()">Clear</button>
+    </div>
+    <div class="log-area" id="logArea">
+      <div class="log-empty" id="logEmpty">
+        <div class="log-empty-icon">⬡</div>
+        <div>Waiting for traffic…</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────
+let startTime = null;
+let uptimeTimer = null;
+let autoScroll = true;
+let logCount = 0;
+
+// ── Uptime ─────────────────────────────────────────────────────────
+function fmtUptime(ms) {
+  const s = Math.floor(ms / 1000);
+  const h = String(Math.floor(s / 3600)).padStart(2, '0');
+  const m = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+  const sec = String(s % 60).padStart(2, '0');
+  return `${h}:${m}:${sec}`;
+}
+
+function tickUptime() {
+  if (!startTime) return;
+  document.getElementById('uptime').textContent = fmtUptime(Date.now() - startTime);
+}
+
+// ── Status polling ─────────────────────────────────────────────────
+function fmtNum(n) {
+  return Number(n).toLocaleString();
+}
+
+async function pollStatus() {
+  try {
+    const r = await fetch('/api/status');
+    if (!r.ok) throw new Error();
+    const d = await r.json();
+
+    if (!startTime) {
+      startTime = Date.now();
+      uptimeTimer = setInterval(tickUptime, 1000);
+    }
+
+    document.getElementById('statusDot').className = 'dot';
+    document.getElementById('statusText').textContent = 'Live';
+
+    document.getElementById('statProxies').textContent = fmtNum(d.proxies);
+    document.getElementById('statRequests').textContent = fmtNum(d.requests);
+    document.getElementById('statRotates').textContent = fmtNum(d.rotates);
+    document.getElementById('statErrors').textContent = fmtNum(d.errors || 0);
+    document.getElementById('statRps').textContent = (d.rps || 0).toFixed(2);
+
+    const proxy = d.proxy || '—';
+    document.getElementById('statProxy').textContent = proxy;
+
+    if (proxy !== '—') {
+      const proto = proxy.split('://')[0] || '';
+      const addr = proxy.split('://')[1] || proxy;
+      document.getElementById('statProxyProto').textContent = proto.toUpperCase() + ' · ' + addr;
+    } else {
+      document.getElementById('statProxyProto').textContent = 'no active proxy';
+    }
+
+    const rotateInput = document.getElementById('cfgRotate');
+    const methodSelect = document.getElementById('cfgMethod');
+    const rateLimitInput = document.getElementById('cfgRateLimit');
+    const delayInput = document.getElementById('cfgDelay');
+    if (document.activeElement !== rotateInput) rotateInput.value = d.rotate;
+    if (document.activeElement !== methodSelect) methodSelect.value = d.method;
+    if (document.activeElement !== rateLimitInput) rateLimitInput.value = d.rateLimit || 0;
+    if (document.activeElement !== delayInput && d.delay && d.delay !== '0s') delayInput.value = d.delay;
+
+  } catch {
+    document.getElementById('statusDot').className = 'dot off';
+    document.getElementById('statusText').textContent = 'Offline';
+  }
+}
+
+setInterval(pollStatus, 1500);
+pollStatus();
+
+// ── Config ─────────────────────────────────────────────────────────
+async function applyConfig() {
+  const rotate = parseInt(document.getElementById('cfgRotate').value, 10);
+  const method = document.getElementById('cfgMethod').value;
+  const rateLimit = parseFloat(document.getElementById('cfgRateLimit').value) || 0;
+  const delay = document.getElementById('cfgDelay').value.trim();
+  try {
+    await fetch('/api/config', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({rotate, method, rateLimit, delay}),
+    });
+    const hint = document.getElementById('saveHint');
+    hint.classList.add('show');
+    setTimeout(() => hint.classList.remove('show'), 2000);
+  } catch (e) {
+    console.error('config error', e);
+  }
+}
+
+document.getElementById('cfgRotate').addEventListener('keydown', e => {
+  if (e.key === 'Enter') applyConfig();
+});
+
+// ── Log ────────────────────────────────────────────────────────────
+const logArea = document.getElementById('logArea');
+
+logArea.addEventListener('scroll', () => {
+  const threshold = 40;
+  autoScroll = logArea.scrollHeight - logArea.scrollTop - logArea.clientHeight < threshold;
+});
+
+function methodBadge(m) {
+  const cls = ['GET','POST','PUT','DELETE','CONNECT'].includes(m) ? m : 'OTHER';
+  return `<span class="badge badge-${cls}">${m}</span>`;
+}
+
+function statusClass(s) {
+  if (s >= 500) return 's5xx';
+  if (s >= 400) return 's4xx';
+  if (s >= 300) return 's3xx';
+  return 's2xx';
+}
+
+function shortURL(u) {
+  try {
+    const url = new URL(u);
+    const path = url.pathname.length > 28 ? url.pathname.slice(0, 28) + '…' : url.pathname;
+    return `<span>${url.protocol}//</span>${url.host}${path}`;
+  } catch { return u; }
+}
+
+function appendLog(data) {
+  const empty = document.getElementById('logEmpty');
+  if (empty) empty.remove();
+
+  logCount++;
+  if (logCount > 300) {
+    const entries = logArea.querySelectorAll('.log-entry-wrap');
+    if (entries.length > 300) entries[0].remove();
+  }
+
+  const ms = data.ms < 1000
+    ? data.ms + 'ms'
+    : (data.ms / 1000).toFixed(1) + 's';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'log-entry-wrap';
+
+  const row = document.createElement('div');
+  row.className = 'log-entry';
+  row.innerHTML = `
+    <span class="log-time">${data.t}</span>
+    ${methodBadge(data.m)}
+    <span class="log-url">${shortURL(data.u)}</span>
+    <span class="log-status ${statusClass(data.s)}">${data.s}</span>
+    <span class="log-ms">${ms}</span>
+  `;
+
+  const sub = document.createElement('div');
+  sub.className = 'log-entry log-proxy-row';
+  sub.innerHTML = `
+    <span></span>
+    <span><span>via</span> ${data.p || '—'}</span>
+  `;
+
+  wrap.appendChild(row);
+  wrap.appendChild(sub);
+  logArea.appendChild(wrap);
+
+  if (autoScroll) logArea.scrollTop = logArea.scrollHeight;
+}
+
+function clearLog() {
+  logCount = 0;
+  logArea.innerHTML = `<div class="log-empty" id="logEmpty">
+    <div class="log-empty-icon">⬡</div>
+    <div>Waiting for traffic…</div>
+  </div>`;
+}
+
+// ── SSE ────────────────────────────────────────────────────────────
+function connectSSE() {
+  const es = new EventSource('/api/logs');
+  es.onmessage = e => {
+    try { appendLog(JSON.parse(e.data)); } catch {}
+  };
+  es.onerror = () => {
+    es.close();
+    setTimeout(connectSSE, 3000);
+  };
+}
+
+connectSSE();
+</script>
+</body>
+</html>
