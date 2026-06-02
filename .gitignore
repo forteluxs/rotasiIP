@@ -3,3 +3,6 @@ dist/*
 *.txt
 *.crt
 *.key
+rotasiIP
+raw_lists/
+raw_lists2/
